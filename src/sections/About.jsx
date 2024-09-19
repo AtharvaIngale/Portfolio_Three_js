@@ -26,7 +26,7 @@ const About = () => {
               <p className="grid-headtext">Hi, I’m Atharva Ingale</p>
               <p className="grid-subtext">
                 I have honed my skills in both frontend and backend dev, creating dynamic
-                and responsive websites. Also I am AI and ML enthusiast
+                and responsive websites. Also I am AI and ML enthusiast.
               </p>
             </div>
           </div>
@@ -39,9 +39,8 @@ const About = () => {
             <div>
               <p className="grid-headtext">Tech Stack</p>
               <p className="grid-subtext">
-                I specialize in a variety of languages, frameworks, and tools that allow me to build robust and scalable
-                applications
-              </p>
+                I specialize in a variety of languages, frameworks, and tools that allow me to build robust and scalable applications.
+               </p>
             </div>
           </div>
         </div>
