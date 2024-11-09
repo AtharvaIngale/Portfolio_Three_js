@@ -7,6 +7,8 @@ import CanvasLoader from '../components/CanvasLoader';
 import { calculateSizes } from '../contansts/index.js';
 import { useMediaQuery } from 'react-responsive';
 import { Group } from 'three/examples/jsm/libs/tween.module.js';
+import Target from '../components/Target.jsx';
+import ReactLogo from '../components/ReactLogo.jsx';
 
 const Hero = () => {
 
@@ -79,7 +81,8 @@ const Hero = () => {
               scale={sizes.deskScale} 
               />
               <group>
-                
+                <Target position={sizes.targetPosition}/>
+                <ReactLogo position={sizes.reactLogoPosition}/>
               </group>
               <ambientLight intensity={2} />
               <directionalLight position={[10, 10, 10]} intensity={0.5} />
