@@ -9,47 +9,14 @@ import { useMediaQuery } from 'react-responsive';
 import { Group } from 'three/examples/jsm/libs/tween.module.js';
 import Target from '../components/Target.jsx';
 import ReactLogo from '../components/ReactLogo.jsx';
+import Cube from '../components/Cube.jsx';
+import Rings from '../components/Rings.jsx';
+import HeroCamera from '../components/HeroCamera.jsx';
+import Button from '../components/Button.jsx';
 
 const Hero = () => {
 
-  // const x = useControls('HackerRoom', {
-  //   positionX: {
-  //     value: 2.5,
-  //     min: -10,
-  //     max: 10
-  //   },
-  //   positionY: {
-  //     value: 2.5,
-  //     min: -10,
-  //     max: 10
-  //   },
-  //   positionZ: {
-  //     value: 2.5,
-  //     min: -10,
-  //     max: 10
-  //   },
-  //   rotationX: {
-  //     value: 0,
-  //     min: -10,
-  //     max: 10
-  //   },
-  //   rotationY: {
-  //     value: 0,
-  //     min: -10,
-  //     max: 10
-  //   },
-  //   rotationZ: {
-  //     value: 0,
-  //     min: -10,
-  //     max: 10
-  //   },
-  //   scale: {
-  //     value: 1,
-  //     min: 0.1,
-  //     max: 10
-  //   }
-  // });
-
+  
   const isMobile = useMediaQuery({maxWidth: 768});
 
   const isTablet = useMediaQuery({minWidth: 768, maxWidth: 1024});
@@ -70,27 +37,39 @@ const Hero = () => {
         </div>
 
         <div className='w-full h-full absolute inset-0'>
-            {/* <Leva></Leva> */}
             <Canvas className='w-full h-full'>
               <Suspense fallback={<CanvasLoader />}>
 
-              <PerspectiveCamera makeDefault position={[0, 0, 20]} /> 
-              <HackerRoom 
-              position={sizes.deskPosition} 
-              rotation={[0, -Math.PI, 0]} 
-              scale={sizes.deskScale} 
-              />
-              <group>
-                <Target position={sizes.targetPosition}/>
-                <ReactLogo position={sizes.reactLogoPosition}/>
-              </group>
-              <ambientLight intensity={2} />
-              <directionalLight position={[10, 10, 10]} intensity={0.5} />
+                <PerspectiveCamera makeDefault position={[0, 0, 20]} /> 
+
+                <HeroCamera isMobile={isMobile}>
+                  <HackerRoom 
+                    position={sizes.deskPosition} 
+                    rotation={[0, -Math.PI, 0]} 
+                    scale={sizes.deskScale} 
+                  />              
+                </HeroCamera>
+
+                <group>
+                  <Target position={sizes.targetPosition}/>
+                  <ReactLogo position={sizes.reactLogoPosition}/>
+                  <Cube position={sizes.cubePosition} />
+                  <Rings position={sizes.ringPosition} />
+                </group>
+                
+                <ambientLight intensity={2} />
+                <directionalLight position={[10, 10, 10]} intensity={0.5} />
 
               </Suspense>
             </Canvas>
         </div>
       
+      <div className='absloute bottom-7 left-0 right-0 w-full z-10 c-space'>
+        <a href='#contact' className='w-fit'>
+          <Button name="Let's work togeather" isBeam containerClass="sm:w-fit w-full sm:min-w-96 "/>
+        </a>
+      </div>
+
     </section>
   )
 } 
